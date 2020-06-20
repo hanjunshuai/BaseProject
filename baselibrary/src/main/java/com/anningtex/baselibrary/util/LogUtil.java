@@ -2,12 +2,6 @@ package com.anningtex.baselibrary.util;
 
 import android.util.Log;
 
-/**
- * @ClassName: LogUtil
- * @Description: java类作用描述
- * @Author: alvis
- * @CreateDate: 2019/12/18 17:24
- */
 public class LogUtil {
     private static boolean isLogEnable = true;
 

@@ -1,11 +1,5 @@
 package com.anningtex.baselibrary.base;
 
-/**
- * @ClassName: BasePresenter
- * @Description: java类作用描述
- * @Author: alvis
- * @CreateDate: 2020/6/19 16:49
- */
 public class BasePresenter<V extends BaseContract.View> implements BaseContract.Presenter<V> {
     private V view;
 

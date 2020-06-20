@@ -6,12 +6,6 @@ import android.content.Context;
 
 import java.util.Stack;
 
-/**
- * @ClassName: AppManager
- * @Description: 应用程序Activity管理类：用于Activity管理和应用程序退出
- * @Author: alvis
- * @CreateDate: 2020/6/19 16:53
- */
 public class AppManager {
     private static Stack<Activity> mStackActivity;
     private static AppManager m_instance;

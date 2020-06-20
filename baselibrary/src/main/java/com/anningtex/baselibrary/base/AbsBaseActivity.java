@@ -14,16 +14,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.anningtex.baseproject.manager.AppManager;
+import com.anningtex.baselibrary.manager.AppManager;
 
 import java.util.Locale;
 
-/**
- * @ClassName: BaseActivity
- * @Description: java类作用描述
- * @Author: alvis
- * @CreateDate: 2020/6/19 16:51
- */
 public abstract class AbsBaseActivity<P extends BaseContract.Presenter> extends AppCompatActivity implements BaseContract.View {
     protected P mPersenter;
 

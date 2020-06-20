@@ -1,11 +1,5 @@
 package com.anningtex.baselibrary.base;
 
-/**
- * @ClassName: BaseBaseContract
- * @Description: java类作用描述
- * @Author: alvis
- * @CreateDate: 2020/6/19 16:49
- */
 public interface BaseContract {
     interface View {
         void showLoading();
