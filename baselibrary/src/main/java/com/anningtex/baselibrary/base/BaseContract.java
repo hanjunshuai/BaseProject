@@ -1,4 +1,4 @@
-package com.anningtex.baseproject.base;
+package com.anningtex.baselibrary.base;
 
 /**
  * @ClassName: BaseBaseContract

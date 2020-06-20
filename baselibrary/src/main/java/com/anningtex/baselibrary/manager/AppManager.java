@@ -1,4 +1,4 @@
-package com.anningtex.baseproject.manager;
+package com.anningtex.baselibrary.manager;
 
 import android.app.Activity;
 import android.app.ActivityManager;

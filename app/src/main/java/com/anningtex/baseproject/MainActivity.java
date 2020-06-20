@@ -1,8 +1,8 @@
 package com.anningtex.baseproject;
 
-import com.anningtex.baseproject.base.AbsBaseActivity;
-import com.anningtex.baseproject.base.BaseContract;
-import com.anningtex.baseproject.base.BasePresenter;
+import com.anningtex.baselibrary.base.AbsBaseActivity;
+import com.anningtex.baselibrary.base.BaseContract;
+import com.anningtex.baselibrary.base.BasePresenter;
 
 /**
  * @Description: des
