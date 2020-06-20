@@ -19,8 +19,7 @@ import com.anningtex.baselibrary.manager.AppManager;
 import java.util.Locale;
 
 public abstract class AbsBaseActivity<P extends BaseContract.Presenter> extends AppCompatActivity implements BaseContract.View {
-    protected P mPersenter;
-
+    protected P mPresenter;
     protected WindowManager mWindowManager;
     protected DisplayMetrics mMetrics;
     protected Bundle mBundle;
@@ -107,8 +106,8 @@ public abstract class AbsBaseActivity<P extends BaseContract.Presenter> extends 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mPersenter != null) {
-            mPersenter.detachView();
+        if (mPresenter != null) {
+            mPresenter.detachView();
         }
     }
 
