@@ -1,4 +1,4 @@
-package com.anningtex.baselibrary.base;
+package com.anningtex.baselibrary.base.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.anningtex.baselibrary.R;
+import com.anningtex.baselibrary.base.BaseViewHolder;
 import com.anningtex.baselibrary.entity.GroupStructure;
 import com.anningtex.baselibrary.entity.SectionEntity;
 
