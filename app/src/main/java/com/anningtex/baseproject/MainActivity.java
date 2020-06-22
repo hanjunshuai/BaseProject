@@ -1,11 +1,16 @@
 package com.anningtex.baseproject;
 
+import android.view.Window;
+import android.widget.Toast;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.anningtex.baselibrary.adapter.GroupedRecyclerViewAdapter;
 import com.anningtex.baselibrary.base.AbsBaseActivity;
 import com.anningtex.baselibrary.base.BaseViewHolder;
-import com.anningtex.baselibrary.base.GroupedRecyclerViewAdapter;
+import com.anningtex.baselibrary.listener.OnHeaderClickListener;
+import com.anningtex.baselibrary.weight.titlebar.DefaultNavigationBar;
 import com.anningtex.baseproject.adapter.GroupAdapter;
 import com.anningtex.baseproject.contract.MainContract;
 import com.anningtex.baseproject.entity.GroupEntity;
@@ -32,6 +37,16 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
             mPresenter.attachView(this);
         }
         toast(mPresenter.setText());
+
+        DefaultNavigationBar navigationBar = new DefaultNavigationBar
+                .Builder(this)
+                .setTitle("投稿")
+                .setRightText("发布")
+                .setRightClickListener(v -> Toast.makeText(MainActivity.this, "发布", Toast.LENGTH_SHORT).show())
+                .setLeftText("left")
+                .setLeftClickListener(v -> Toast.makeText(MainActivity.this, "返回", Toast.LENGTH_SHORT).show())
+                .setLeftTextClickListener(v -> Toast.makeText(this, "left", Toast.LENGTH_SHORT).show())
+                .builder();
         mRecyclerView = findViewById(R.id.recycler_view);
         initRecycler();
     }
@@ -42,7 +57,7 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
         addData();
         mGroupAdapter.setData(mGroupEntities);
         mRecyclerView.setAdapter(mGroupAdapter);
-        mGroupAdapter.setOnHeaderClickListener(new GroupedRecyclerViewAdapter.OnHeaderClickListener() {
+        mGroupAdapter.setOnHeaderClickListener(new OnHeaderClickListener() {
             @Override
             public void onHeaderClick(GroupedRecyclerViewAdapter groupedRecyclerViewAdapter, BaseViewHolder holder, int groupPosition) {
                 if (groupedRecyclerViewAdapter.isExpand(groupPosition)) {

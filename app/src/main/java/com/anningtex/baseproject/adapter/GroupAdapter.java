@@ -1,7 +1,7 @@
 package com.anningtex.baseproject.adapter;
 
 import com.anningtex.baselibrary.base.BaseViewHolder;
-import com.anningtex.baselibrary.base.GroupedRecyclerViewAdapter;
+import com.anningtex.baselibrary.adapter.GroupedRecyclerViewAdapter;
 import com.anningtex.baseproject.R;
 import com.anningtex.baseproject.entity.GroupEntity;
 
