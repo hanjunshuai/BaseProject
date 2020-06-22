@@ -1,4 +1,4 @@
-package com.anningtex.baselibrary.base.adapter;
+package com.anningtex.baselibrary.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +11,13 @@ import com.anningtex.baselibrary.R;
 import com.anningtex.baselibrary.base.BaseViewHolder;
 import com.anningtex.baselibrary.entity.GroupStructure;
 import com.anningtex.baselibrary.entity.SectionEntity;
+import com.anningtex.baselibrary.listener.OnChildClickListener;
+import com.anningtex.baselibrary.listener.OnFooterClickListener;
+import com.anningtex.baselibrary.listener.OnHeaderClickListener;
+import com.anningtex.baselibrary.listener.OnLongChildClickListener;
+import com.anningtex.baselibrary.listener.OnLongHeaderClickListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @ClassName: GroupedRecyclerViewAdapter
@@ -21,7 +25,7 @@ import java.util.List;
  * @Author: alvis
  * @CreateDate: 2019/11/12 14:01
  */
-public abstract class GroupedRecyclerViewAdapter<D extends SectionEntity> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public abstract class GroupedRecyclerViewAdapter<D extends SectionEntity> extends BaseRecyclerViewAdapter<D, RecyclerView.ViewHolder> {
 
     public static final int TYPE_HEADER = R.integer.type_header;
     public static final int TYPE_FOOTER = R.integer.type_footer;
@@ -35,21 +39,11 @@ public abstract class GroupedRecyclerViewAdapter<D extends SectionEntity> extend
     private OnChildClickListener mOnChildClickListener;
     private OnLongChildClickListener mOnLongChildClickListener;
 
-    protected List<D> mData;
     //保存分组列表的组结构
     protected ArrayList<GroupStructure> mStructures = new ArrayList<>();
     //数据是否发生变化。如果数据发生变化，要及时更新组结构。
     private boolean isDataChanged;
     private int mTempPosition;
-
-    public List<D> getData() {
-        return mData;
-    }
-
-    public void setData(List<D> data) {
-        mData = data;
-        notifyDataChanged();
-    }
 
     public GroupedRecyclerViewAdapter() {
         registerAdapterDataObserver(new GroupDataObserver());
@@ -1196,25 +1190,5 @@ public abstract class GroupedRecyclerViewAdapter<D extends SectionEntity> extend
         public void onItemRangeRemoved(int positionStart, int itemCount) {
             isDataChanged = true;
         }
-    }
-
-    public interface OnHeaderClickListener {
-        void onHeaderClick(GroupedRecyclerViewAdapter groupedRecyclerViewAdapter, BaseViewHolder holder, int groupPosition);
-    }
-
-    public interface OnLongHeaderClickListener {
-        void onLongHeaderClick(GroupedRecyclerViewAdapter groupedRecyclerViewAdapter, BaseViewHolder holder, int groupPosition);
-    }
-
-    public interface OnFooterClickListener {
-        void onFooterClick(GroupedRecyclerViewAdapter groupedRecyclerViewAdapter, BaseViewHolder holder, int groupPosition);
-    }
-
-    public interface OnChildClickListener {
-        void onChildClick(GroupedRecyclerViewAdapter groupedRecyclerViewAdapter, BaseViewHolder holder, int groupPosition, int childPosition);
-    }
-
-    public interface OnLongChildClickListener {
-        void onLongChildClick(GroupedRecyclerViewAdapter groupedRecyclerViewAdapter, BaseViewHolder holder, int groupPosition, int childPosition);
     }
 }
