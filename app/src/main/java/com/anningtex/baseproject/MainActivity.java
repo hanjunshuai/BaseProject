@@ -1,5 +1,6 @@
 package com.anningtex.baseproject;
 
+import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
@@ -41,11 +42,13 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
         DefaultNavigationBar navigationBar = new DefaultNavigationBar
                 .Builder(this)
                 .setTitle("投稿")
-                .setRightText("发布")
                 .setRightClickListener(v -> Toast.makeText(MainActivity.this, "发布", Toast.LENGTH_SHORT).show())
                 .setLeftText("left")
                 .setLeftClickListener(v -> Toast.makeText(MainActivity.this, "返回", Toast.LENGTH_SHORT).show())
                 .setLeftTextClickListener(v -> Toast.makeText(this, "left", Toast.LENGTH_SHORT).show())
+                .setRightIcon(R.mipmap.ic_launcher)
+                .setLeftIcon(R.mipmap.ic_launcher)
+                .setLeftIconVisibility(View.GONE)
                 .builder();
         mRecyclerView = findViewById(R.id.recycler_view);
         initRecycler();

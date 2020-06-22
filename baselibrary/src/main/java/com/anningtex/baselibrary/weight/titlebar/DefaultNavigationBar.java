@@ -27,15 +27,16 @@ public class DefaultNavigationBar extends AbsNavigationBar<DefaultNavigationBar.
     public void applyView() {
         // 绑定效果
         setText(R.id.title, getmParams().mTitle);
-        setText(R.id.right_text, getmParams().mRightText);
-        setOnClickListener(R.id.right_text, getmParams().mRightClickListener);
-
         setText(R.id.left_text, getmParams().mLeftText);
-        setOnClickListener(R.id.back, getmParams().mLeftClickListener);
+        setText(R.id.right_text, getmParams().mRightText);
+
+        setIcon(R.id.left_icon, getmParams().mLeftIconRes);
+        setIcon(R.id.right_icon, getmParams().mRightIconRes);
+        setLeftVisibility(R.id.left_icon, getmParams().mLeftIconVisibility);
+
+        setOnClickListener(R.id.right_text, getmParams().mRightClickListener);
+        setOnClickListener(R.id.left_icon, getmParams().mLeftClickListener);
         setOnClickListener(R.id.left_text, getmParams().mLeftTextClickListener);
-
-        // 左边 要写一个默认的 finishActivity
-
     }
 
     public static class Builder extends AbsNavigationBar.Builder {
@@ -74,6 +75,16 @@ public class DefaultNavigationBar extends AbsNavigationBar<DefaultNavigationBar.
             return this;
         }
 
+        public DefaultNavigationBar.Builder setLeftIcon(int leftIconRes) {
+            p.mLeftIconRes = leftIconRes;
+            return this;
+        }
+
+        public DefaultNavigationBar.Builder setLeftIconVisibility(int leftIconVisibility) {
+            p.mLeftIconVisibility = leftIconVisibility;
+            return this;
+        }
+
         public DefaultNavigationBar.Builder setRightClickListener(View.OnClickListener rightClickListener) {
             p.mRightClickListener = rightClickListener;
             return this;
@@ -99,14 +110,14 @@ public class DefaultNavigationBar extends AbsNavigationBar<DefaultNavigationBar.
             public String mTitle;
             public String mRightText;
             public int mRightIconRes;
+            public int mLeftIconRes;
+            public int mLeftIconVisibility;
             public View.OnClickListener mRightClickListener;
             public String mLeftText;
             public View.OnClickListener mLeftTextClickListener;
             public View.OnClickListener mLeftClickListener = v -> {
                 ((Activity) mContext).finish();
             };
-
-            // 所有效果的放置
 
             public DefaultNavigationBarParams(Context context, ViewGroup parent) {
                 super(context, parent);

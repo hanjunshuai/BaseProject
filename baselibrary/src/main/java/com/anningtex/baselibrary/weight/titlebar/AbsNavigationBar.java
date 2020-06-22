@@ -2,11 +2,15 @@ package com.anningtex.baselibrary.weight.titlebar;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
 
 /**
  * @ClassName: AbsNavigationBar
@@ -52,6 +56,19 @@ public abstract class AbsNavigationBar<P extends AbsNavigationBar.Builder.AbsNav
         if (!TextUtils.isEmpty(text)) {
             tv.setVisibility(View.VISIBLE);
             tv.setText(text);
+        }
+    }
+
+    protected void setIcon(int viewId, int iconRes) {
+        ImageView image = findViewById(viewId);
+        image.setVisibility(View.VISIBLE);
+        image.setImageResource(iconRes);
+    }
+
+    protected void setLeftVisibility(int viewId, int visibility) {
+        ImageView image = findViewById(viewId);
+        if (image != null) {
+            image.setVisibility(visibility);
         }
     }
 
