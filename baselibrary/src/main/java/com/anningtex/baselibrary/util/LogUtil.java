@@ -5,7 +5,7 @@ import android.util.Log;
 public class LogUtil {
     private static boolean isLogEnable = true;
 
-    private static String tag = "AnLog";
+    private static String tag = "TAG";
 
     public static void debug(boolean isEnable) {
         debug(tag, isEnable);

@@ -1,7 +1,9 @@
 package com.anningtex.baseproject;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +13,7 @@ import com.anningtex.baselibrary.adapter.GroupedRecyclerViewAdapter;
 import com.anningtex.baselibrary.base.AbsBaseActivity;
 import com.anningtex.baselibrary.base.BaseViewHolder;
 import com.anningtex.baselibrary.listener.OnHeaderClickListener;
+import com.anningtex.baselibrary.weight.pop.CommonPopupWindow;
 import com.anningtex.baselibrary.weight.titlebar.DefaultNavigationBar;
 import com.anningtex.baseproject.adapter.GroupAdapter;
 import com.anningtex.baseproject.contract.MainContract;
@@ -45,13 +48,39 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
                 .setRightClickListener(v -> Toast.makeText(MainActivity.this, "发布", Toast.LENGTH_SHORT).show())
                 .setLeftText("left")
                 .setLeftClickListener(v -> Toast.makeText(MainActivity.this, "返回", Toast.LENGTH_SHORT).show())
-                .setLeftTextClickListener(v -> Toast.makeText(this, "left", Toast.LENGTH_SHORT).show())
+                .setLeftTextClickListener(v -> createPop(v))
                 .setRightIcon(R.mipmap.ic_launcher)
                 .setLeftIcon(R.mipmap.ic_launcher)
                 .setLeftIconVisibility(View.GONE)
                 .builder();
         mRecyclerView = findViewById(R.id.recycler_view);
         initRecycler();
+
+    }
+
+    private void createPop(View view) {
+        CommonPopupWindow popupWindow = new CommonPopupWindow.Builder(this)
+                //设置PopupWindow布局
+                .setView(R.layout.popup_down)
+                //设置宽高
+                .setWidthAndHeight(ViewGroup.LayoutParams.MATCH_PARENT, (int) (mMetrics.heightPixels * 0.5))
+                //设置动画
+                //设置背景颜色，取值范围0.0f-1.0f 值越小越暗 1.0f为透明
+                .setBackGroundLevel(0.5f)
+                //设置PopupWindow里的子View及点击事件
+                .setViewOnclickListener(new CommonPopupWindow.ViewInterface() {
+                    @Override
+                    public void getChildView(View view, int layoutResId) {
+                        TextView tv_child = view.findViewById(R.id.tv_child);
+                        tv_child.setText("我是子View");
+                    }
+                })
+                //设置外部是否可点击 默认是true
+                .setOutsideTouchable(false)
+                //开始构建
+                .create();
+        //弹出PopupWindow
+        popupWindow.showAsDropDown(view);
     }
 
     private void initRecycler() {

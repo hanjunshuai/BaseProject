@@ -23,13 +23,13 @@ public class PopupController {
     /**
      * 弹窗布局View
      */
-    private View mPopupView;
+    public View mPopupView;
     private View mView;
     private Window mWindow;
 
-    public PopupController(Context context, View popupView) {
+    public PopupController(Context context, PopupWindow popupWindow) {
         mContext = context;
-        mPopupView = popupView;
+        mPopupWindow = popupWindow;
     }
 
     public void setLayoutResId(int layoutResId) {
@@ -75,7 +75,7 @@ public class PopupController {
      *
      * @param level
      */
-    private void setBackGroundLevel(float level) {
+    public void setBackGroundLevel(float level) {
         mWindow = ((Activity) mContext).getWindow();
         WindowManager.LayoutParams params = mWindow.getAttributes();
         params.alpha = level;
