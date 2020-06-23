@@ -31,7 +31,6 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-
 /**
  * @ClassName: BaseViewHolder
  * @Description: java类作用描述

@@ -45,6 +45,7 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
         DefaultNavigationBar navigationBar = new DefaultNavigationBar
                 .Builder(this)
                 .setTitle("投稿")
+                .setRightText("right")
                 .setRightClickListener(v -> Toast.makeText(MainActivity.this, "发布", Toast.LENGTH_SHORT).show())
                 .setLeftText("left")
                 .setLeftClickListener(v -> Toast.makeText(MainActivity.this, "返回", Toast.LENGTH_SHORT).show())
@@ -57,6 +58,8 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
         initRecycler();
 
     }
+
+    private TextView tv_child;
 
     private void createPop(View view) {
         CommonPopupWindow popupWindow = new CommonPopupWindow.Builder(this)
@@ -71,7 +74,7 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
                 .setViewOnclickListener(new CommonPopupWindow.ViewInterface() {
                     @Override
                     public void getChildView(View view, int layoutResId) {
-                        TextView tv_child = view.findViewById(R.id.tv_child);
+                        tv_child = view.findViewById(R.id.tv_child);
                         tv_child.setText("我是子View");
                     }
                 })
@@ -81,6 +84,8 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
                 .create();
         //弹出PopupWindow
         popupWindow.showAsDropDown(view);
+
+        tv_child.setOnClickListener(v -> popupWindow.dismiss());
     }
 
     private void initRecycler() {
@@ -118,4 +123,8 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        toast("onBackPressed");
+    }
 }
