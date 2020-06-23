@@ -1,6 +1,6 @@
 package com.anningtex.baselibrary.base
 
-interface BaseContract {
+interface AbsBaseContract {
     interface View {
         fun showLoading()
         fun dismissLoading()

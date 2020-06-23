@@ -1,6 +1,6 @@
 package com.anningtex.baseproject.contract;
 
-import com.anningtex.baselibrary.base.BaseContract;
+import com.anningtex.baselibrary.base.AbsBaseContract;
 
 /**
  * @ClassName: MainContract
@@ -9,11 +9,11 @@ import com.anningtex.baselibrary.base.BaseContract;
  * @CreateDate: 2020/6/20 16:12
  */
 public interface MainContract {
-    interface View extends BaseContract.View {
+    interface View extends AbsBaseContract.View {
 
     }
 
-    interface Presenter extends BaseContract.Presenter<View> {
+    interface Presenter extends AbsBaseContract.Presenter<View> {
         String setText();
     }
 }

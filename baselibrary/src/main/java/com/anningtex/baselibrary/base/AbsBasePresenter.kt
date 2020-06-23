@@ -1,6 +1,6 @@
 package com.anningtex.baselibrary.base
 
-open class BasePresenter<V : BaseContract.View?> : BaseContract.Presenter<V> {
+open class AbsBasePresenter<V : AbsBaseContract.View?> : AbsBaseContract.Presenter<V> {
     var attachView: V? = null
         private set
 

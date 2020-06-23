@@ -1,7 +1,7 @@
 package com.anningtex.baseproject.presenter;
 
 
-import com.anningtex.baselibrary.base.BasePresenter;
+import com.anningtex.baselibrary.base.AbsBasePresenter;
 import com.anningtex.baseproject.contract.MainContract;
 
 /**
@@ -10,7 +10,7 @@ import com.anningtex.baseproject.contract.MainContract;
  * @Author: alvis
  * @CreateDate: 2020/6/20 16:11
  */
-public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
+public class MainPresenter extends AbsBasePresenter<MainContract.View> implements MainContract.Presenter {
     @Override
     public String setText() {
         return "hello import";

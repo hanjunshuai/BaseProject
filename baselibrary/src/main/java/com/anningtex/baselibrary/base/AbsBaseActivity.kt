@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.anningtex.baselibrary.manager.AppManager
 import java.util.*
 
-abstract class AbsBaseActivity<P : BaseContract.Presenter<*>?> : AppCompatActivity(), BaseContract.View {
+abstract class AbsBaseActivity<P : AbsBaseContract.Presenter<*>?> : AppCompatActivity(), AbsBaseContract.View {
     @JvmField
     protected var mPresenter: P? = null
     protected var mWindowManager: WindowManager? = null
