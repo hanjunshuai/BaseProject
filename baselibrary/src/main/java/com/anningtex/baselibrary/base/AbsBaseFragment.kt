@@ -18,9 +18,14 @@ import androidx.fragment.app.Fragment
  * @CreateDate: 2020/6/20 15:43
  */
 abstract class AbsBaseFragment<P : AbsBaseContract.Presenter<*>?> : Fragment(), AbsBaseContract.View {
+    @JvmField
     protected var mPresenter: P? = null
+
+    @JvmField
     protected var mContext: Context? = null
     protected var mWindowManager: WindowManager? = null
+
+    @JvmField
     protected var mMetrics: DisplayMetrics? = null
     override fun onAttach(context: Context) {
         super.onAttach(context)
