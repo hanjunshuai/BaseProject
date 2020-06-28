@@ -31,12 +31,12 @@ abstract class AbsBaseFragment<P : AbsBaseContract.Presenter<*>?> : Fragment(), 
         mWindowManager = context!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         mMetrics = DisplayMetrics()
         mWindowManager!!.defaultDisplay.getMetrics(mMetrics)
-        val view = inflater.inflate(layoutResId, container, false)
-        onFragmentViewCreated()
+        var view = inflater.inflate(layoutResId, container, false)
+        onFragmentViewCreated(view)
         return view
     }
 
-    protected abstract fun onFragmentViewCreated()
+    protected abstract fun onFragmentViewCreated(view: View?)
 
     protected abstract val layoutResId: Int
 
@@ -69,4 +69,8 @@ abstract class AbsBaseFragment<P : AbsBaseContract.Presenter<*>?> : Fragment(), 
         intent.putExtra(name, value)
         startActivity(intent)
     }
+
+    override fun showLoading() {}
+
+    override fun dismissLoading() {}
 }
