@@ -36,7 +36,7 @@ abstract class AbsBaseFragment<P : AbsBaseContract.Presenter<*>?> : Fragment(), 
         return view
     }
 
-    protected fun onFragmentViewCreated() {}
+    protected abstract fun onFragmentViewCreated()
 
     protected abstract val layoutResId: Int
 
