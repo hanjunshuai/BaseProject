@@ -56,7 +56,7 @@ public class GroupAdapter extends GroupedRecyclerViewAdapter<GroupEntity> {
 
     @Override
     public void onBindHeaderViewHolder(BaseViewHolder holder, int groupPosition) {
-        holder.setText(R.id.item_tv_header, mData.get(groupPosition).header);
+        holder.setText(R.id.item_tv_header, mData.get(groupPosition).getHeader());
     }
 
     @Override
