@@ -23,6 +23,8 @@ abstract class AbsBaseFragment<P : AbsBaseContract.Presenter<*>?> : Fragment(), 
 
     @JvmField
     protected var mContext: Context? = null
+
+    @JvmField
     protected var mWindowManager: WindowManager? = null
 
     @JvmField
