@@ -22,7 +22,7 @@ import com.anningtex.baseproject.presenter.MainPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AbsBaseActivity<MainPresenter> implements MainContract.View {
+public class MainActivity extends AbsBaseActivity<MainContract.View, MainPresenter> implements MainContract.View {
 
     private RecyclerView mRecyclerView;
     private GroupAdapter mGroupAdapter;
@@ -30,15 +30,10 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_main;
-
     }
 
     @Override
     protected void initViews() {
-        if (mPresenter == null) {
-            mPresenter = new MainPresenter();
-            mPresenter.attachView(this);
-        }
         toast(mPresenter.setText());
 
         DefaultNavigationBar navigationBar = new DefaultNavigationBar
@@ -125,5 +120,10 @@ public class MainActivity extends AbsBaseActivity<MainPresenter> implements Main
     @Override
     public void onBackPressed() {
         toast("onBackPressed");
+    }
+
+    @Override
+    protected MainPresenter createPresenter() {
+        return new MainPresenter();
     }
 }

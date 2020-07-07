@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.anningtex.baselibrary.manager.AppManager
 import java.util.*
 
-abstract class AbsBaseActivity<P : AbsBaseContract.Presenter<*>?> : AppCompatActivity(), AbsBaseContract.View {
+abstract class AbsBaseActivity<in V : AbsBaseContract.View, P : AbsBaseContract.Presenter<in V>?> : AppCompatActivity(), AbsBaseContract.View {
     @JvmField
     protected var mPresenter: P? = null
     protected var mWindowManager: WindowManager? = null
@@ -24,6 +24,8 @@ abstract class AbsBaseActivity<P : AbsBaseContract.Presenter<*>?> : AppCompatAct
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutResId)
+        mPresenter = createPresenter()
+        mPresenter?.attachView(this as V)
         setLanguage()
         mWindowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
         mMetrics = DisplayMetrics()
@@ -34,6 +36,8 @@ abstract class AbsBaseActivity<P : AbsBaseContract.Presenter<*>?> : AppCompatAct
     }
 
     protected abstract val layoutResId: Int
+
+    protected abstract fun createPresenter(): P
 
     /**
      * 初始化控件，设置控件事件
