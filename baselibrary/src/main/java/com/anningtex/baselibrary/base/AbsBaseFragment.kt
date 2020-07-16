@@ -39,9 +39,12 @@ abstract class AbsBaseFragment<in V : AbsBaseContract.View, P : AbsBaseContract.
         mMetrics = DisplayMetrics()
         mWindowManager!!.defaultDisplay.getMetrics(mMetrics)
         var view = inflater.inflate(layoutResId, container, false)
+        mPresenter = createPresenter()
         onFragmentViewCreated(view)
         return view
     }
+
+    abstract fun createPresenter(): P?
 
     protected abstract fun onFragmentViewCreated(view: View?)
 
