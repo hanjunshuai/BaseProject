@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment
  * @Author: alvis
  * @CreateDate: 2020/6/20 15:43
  */
-abstract class AbsBaseFragment<P : AbsBaseContract.Presenter<*>?> : Fragment(), AbsBaseContract.View {
+abstract class AbsBaseFragment<in V : AbsBaseContract.View, P : AbsBaseContract.Presenter<in V>?> : Fragment(), AbsBaseContract.View {
     @JvmField
     protected var mPresenter: P? = null
 
